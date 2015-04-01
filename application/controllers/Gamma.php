@@ -2,7 +2,7 @@
 
 /**
  * Secret stuff
- * 
+ *
  * controllers/Welcome.php
  *
  * ------------------------------------------------------------------------
@@ -20,6 +20,7 @@ class Gamma extends Application {
     function index() {
         $this->data['pagebody'] = 'gamma';
         $this->render();
+        $this->restrict(ROLE_ADMIN);
     }
 
 }

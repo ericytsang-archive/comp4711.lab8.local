@@ -8,7 +8,9 @@ $config['menu_choices'] = array(
     'menudata' => array(
 	array('name' => "Alpha", 'link' => '/alpha'),
 	array('name' => "Beta", 'link' => '/beta'),
-	array('name' => "Gamma", 'link' => '/gamma'),
+    array('name' => "Gamma", 'link' => '/gamma'),
+    array('name' => "Login", 'link' => 'auth'),
+    array('name' => "Logout", 'link' => 'auth/logout'),
         )
     );
 
@@ -316,7 +318,7 @@ $config['cache_query_string'] = FALSE;
 | http://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'b4a4c023d5bfff16620f0486b3137553c0215f5e';
 
 /*
 |--------------------------------------------------------------------------
@@ -366,10 +368,10 @@ $config['encryption_key'] = '';
 | except for 'cookie_prefix' and 'cookie_httponly', which are ignored here.
 |
 */
-$config['sess_driver'] = 'files';
+$config['sess_driver'] = 'database';
 $config['sess_cookie_name'] = 'ci_session';
 $config['sess_expiration'] = 7200;
-$config['sess_save_path'] = NULL;
+$config['sess_save_path'] = 'ci_sessions';
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;
 $config['sess_regenerate_destroy'] = FALSE;

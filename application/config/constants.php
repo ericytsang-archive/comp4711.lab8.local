@@ -3,6 +3,12 @@
 // location of data folders
 define('DATAPATH', './data/');
 define('XMLSUFFIX','.xml');
+
+/**
+ * user roles
+ */
+define('ROLE_USER','user');
+define('ROLE_ADMIN','admin');
 /*
 |--------------------------------------------------------------------------
 | File Stream Modes
