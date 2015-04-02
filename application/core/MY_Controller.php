@@ -86,13 +86,13 @@ class Application extends CI_Controller {
             $menuChoices[] = array('name' => 'Alpha', 'link' => '/alpha');
         }
 
-        // if user, add menu choice for beta and logout
+        // if user, add menu choice for beta
         if(in_array($userRole,array(ROLE_USER,ROLE_ADMIN)))
         {
             $menuChoices[] = array('name' => 'Beta', 'link' => '/beta');
         }
 
-        // if admin, add menu choices for beta, gamma and logout
+        // if admin, add menu choices for gamma
         if(in_array($userRole,array(ROLE_ADMIN)))
         {
             $menuChoices[] = array('name' => 'Gamma', 'link' => '/gamma');
