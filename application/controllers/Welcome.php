@@ -23,18 +23,4 @@ class Welcome extends Application {
 
         $this->render();
     }
-
-    function makemenu() {
-        // get role & name from session
-        $userRole = $this->session->userdata('userRole');
-        $userName = $this->session->userdata('userName');
-
-        // make array, with menu choice for alpha
-
-        // if not logged in, add menu choice to login
-        // if()
-        // if user, add menu choice for beta and logout
-        // if admin, add menu choices for beta, gamma and logout
-        // return the choices array
-    }
 }

@@ -6,8 +6,8 @@ if (!defined('BASEPATH'))
 // the menu basics (text navbar)
 $config['menu_choices'] = array(
     'menudata' => array(
-	array('name' => "Alpha", 'link' => '/alpha'),
-	array('name' => "Beta", 'link' => '/beta'),
+    array('name' => "Alpha", 'link' => '/alpha'),
+    array('name' => "Beta", 'link' => '/beta'),
     array('name' => "Gamma", 'link' => '/gamma'),
     array('name' => "Login", 'link' => 'auth'),
     array('name' => "Logout", 'link' => 'auth/logout'),
@@ -59,7 +59,7 @@ $config['index_page'] = '';
 |
 | WARNING: If you set this to 'PATH_INFO', URIs will always be URL-decoded!
 */
-$config['uri_protocol']	= 'REQUEST_URI';
+$config['uri_protocol'] = 'REQUEST_URI';
 
 /*
 |--------------------------------------------------------------------------

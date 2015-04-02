@@ -9,6 +9,7 @@ define('XMLSUFFIX','.xml');
  */
 define('ROLE_USER','user');
 define('ROLE_ADMIN','admin');
+define('ROLE_VISITOR','visit');
 /*
 |--------------------------------------------------------------------------
 | File Stream Modes

@@ -22,7 +22,7 @@ class Application extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->data = array();
-        $this->data['title'] = "Top Secret Government Site";    // our default title
+        $this->data['title'] = 'Top Secret Government Site';    // our default title
         $this->errors = array();
         $this->data['pageTitle'] = 'welcome';   // our default page
     }
@@ -31,7 +31,7 @@ class Application extends CI_Controller {
      * Render this page
      */
     function render() {
-        $this->data['menubar'] = $this->parser->parse('_menubar', $this->config->item('menu_choices'),true);
+        $this->data['menubar'] = $this->parser->parse('_menubar', $this->makemenu(),true);
         $this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
 
         // finally, build the browser page!
@@ -48,16 +48,68 @@ class Application extends CI_Controller {
             {
                 if (!in_array($userRole, $roleNeeded))
                 {
-                    redirect("/");
+                    redirect('/');
                     return;
                 }
             }
             else if ($userRole != $roleNeeded)
             {
-                redirect("/");
+                redirect('/');
                 return;
             }
         }
+    }
+
+    function get_user_role()
+    {
+        return ($this->session->userdata('userRole')) ?
+            $this->session->userdata('userRole') : ROLE_VISITOR;
+    }
+
+    function get_user_name()
+    {
+        return ($this->session->userdata('userName')) ?
+            $this->session->userdata('userName') : 'Visitor';
+    }
+
+    function makemenu() {
+        // get role & name from session
+        $userRole = $this->get_user_role();
+        $userName = $this->get_user_name();
+
+        // make array, with menu choices
+        $menuChoices = array();
+
+        // add link to alpha for everybody
+        if(in_array($userRole,array(ROLE_USER,ROLE_ADMIN,ROLE_VISITOR)))
+        {
+            $menuChoices[] = array('name' => 'Alpha', 'link' => '/alpha');
+        }
+
+        // if user, add menu choice for beta and logout
+        if(in_array($userRole,array(ROLE_USER,ROLE_ADMIN)))
+        {
+            $menuChoices[] = array('name' => 'Beta', 'link' => '/beta');
+        }
+
+        // if admin, add menu choices for beta, gamma and logout
+        if(in_array($userRole,array(ROLE_ADMIN)))
+        {
+            $menuChoices[] = array('name' => 'Gamma', 'link' => '/gamma');
+        }
+
+        // if not logged in, add menu choice to login; logout button otherwise
+        if(in_array($userRole,array(ROLE_USER,ROLE_ADMIN)))
+        {
+            $menuChoices[] = array('name' => 'Logout', 'link' => 'auth/logout');
+        }
+        else
+        {
+            $menuChoices[] = array('name' => 'Login', 'link' => 'auth');
+        }
+
+        // return the choices array
+        return array('menudata'=>$menuChoices, 'username'=>'Hello, '.$userName);
     }
 }
 
